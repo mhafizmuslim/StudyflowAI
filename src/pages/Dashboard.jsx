@@ -264,73 +264,73 @@ export default function Dashboard() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-8">
         {/* Welcome Section */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
             {getGreeting()}, {user?.nama}! 👋
           </h1>
-          <p className="text-gray-600">
+          <p className="text-sm sm:text-base text-gray-600">
             Siap belajar hari ini? Mari kita maksimalkan potensi kamu!
           </p>
         </div>
         
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="bg-purple-100 p-2 rounded-lg">
-                <BookOpen className="w-5 h-5 text-purple-600" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2">
+              <div className="bg-purple-100 p-1.5 sm:p-2 rounded-lg">
+                <BookOpen className="w-4 sm:w-5 h-4 sm:h-5 text-purple-600" />
               </div>
-              <span className="text-gray-600 text-sm font-medium">Study Plans</span>
+              <span className="text-gray-600 text-xs sm:text-sm font-medium">Study Plans</span>
             </div>
-            <p className="text-3xl font-bold text-gray-900">{studyPlans.length}</p>
+            <p className="text-2xl sm:text-3xl font-bold text-gray-900">{studyPlans.length}</p>
           </div>
           
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="bg-blue-100 p-2 rounded-lg">
-                <Clock className="w-5 h-5 text-blue-600" />
+          <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2">
+              <div className="bg-blue-100 p-1.5 sm:p-2 rounded-lg">
+                <Clock className="w-4 sm:w-5 h-4 sm:h-5 text-blue-600" />
               </div>
-              <span className="text-gray-600 text-sm font-medium">Total Menit</span>
+              <span className="text-gray-600 text-xs sm:text-sm font-medium">Total Menit</span>
             </div>
-            <p className="text-3xl font-bold text-gray-900">
+            <p className="text-2xl sm:text-3xl font-bold text-gray-900">
               {stats?.total_minutes || 0}
             </p>
           </div>
           
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="bg-green-100 p-2 rounded-lg">
-                <Target className="w-5 h-5 text-green-600" />
+          <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2">
+              <div className="bg-green-100 p-1.5 sm:p-2 rounded-lg">
+                <Target className="w-4 sm:w-5 h-4 sm:h-5 text-green-600" />
               </div>
-              <span className="text-gray-600 text-sm font-medium">Avg Focus</span>
+              <span className="text-gray-600 text-xs sm:text-sm font-medium">Avg Focus</span>
             </div>
-            <p className="text-3xl font-bold text-gray-900">
+            <p className="text-2xl sm:text-3xl font-bold text-gray-900">
               {stats?.avg_focus != null ? Number(stats.avg_focus).toFixed(1) : '0'}/10
             </p>
           </div>
           
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="bg-orange-100 p-2 rounded-lg">
-                <Flame className="w-5 h-5 text-orange-600" />
+          <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2">
+              <div className="bg-orange-100 p-1.5 sm:p-2 rounded-lg">
+                <Flame className="w-4 sm:w-5 h-4 sm:h-5 text-orange-600" />
               </div>
-              <span className="text-gray-600 text-sm font-medium">Sessions</span>
+              <span className="text-gray-600 text-xs sm:text-sm font-medium">Sessions</span>
             </div>
-            <p className="text-3xl font-bold text-gray-900">
+            <p className="text-2xl sm:text-3xl font-bold text-gray-900">
               {stats?.total_sessions || 0}
             </p>
           </div>
         </div>
         
         {/* Learning Persona Card */}
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl p-8 text-white mb-8 shadow-xl">
+        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl sm:rounded-3xl p-5 sm:p-8 text-white mb-6 sm:mb-8 shadow-xl">
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-3">
-                <Sparkles className="w-6 h-6" />
-                <h2 className="text-xl font-bold">Your Learning Persona</h2>
+                <Sparkles className="w-5 sm:w-6 h-5 sm:h-6" />
+                <h2 className="text-lg sm:text-xl font-bold">Your Learning Persona</h2>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                 <div>
                   <p className="text-purple-200 text-sm mb-1">Gaya Belajar</p>
                   <p className="font-semibold text-lg">

@@ -524,9 +524,20 @@ router.put('/sessions/:sessionId/end', verifyToken, async (req, res) => {
     console.log('Session ended successfully:', sessionId);
 
     // Create simple session summary
-    const modules = await dbHelpers.getModulesByPlanId(plan_id);
-    const nextModule = modules.find(m => !m.konten || m.konten.trim() === '') || modules.find(m => m.urutan === (modules?.length ? modules.length : 1));
-    const summary = `Sesi selesai (${durasi_menit} menit). ${pomodoro_count || 0} pomodoro. ${nextModule ? 'Lanjutkan ke modul berikutnya: ' + (nextModule?.judul || nextModule?.topik || 'modul selanjutnya') + '.' : 'Tidak ada modul berikutnya.'}`;
+    let summary = `Sesi selesai (${durasi_menit} menit). ${pomodoro_count || 0} pomodoro.`;
+    
+    // Get next module if session has a plan_id
+    if (session.plan_id) {
+      try {
+        const modules = await dbHelpers.getModulesByPlanId(session.plan_id);
+        const nextModule = modules.find(m => !m.konten || m.konten.trim() === '') || modules.find(m => m.urutan === (modules?.length ? modules.length : 1));
+        if (nextModule) {
+          summary += ` Lanjutkan ke modul berikutnya: ${nextModule?.judul || nextModule?.topik || 'modul selanjutnya'}.`;
+        }
+      } catch (err) {
+        console.log('Could not fetch next module:', err.message);
+      }
+    }
 
     res.json({ message: 'Sesi berakhir', summary });
   } catch (error) {
