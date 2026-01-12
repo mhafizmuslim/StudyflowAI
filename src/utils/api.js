@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://web-production-592c2.up.railway.app/api';
 
 export const api = {
   // Helper untuk fetch dengan auth
