@@ -22,7 +22,7 @@ router.post('/tutor', verifyToken, async (req, res) => {
         'SELECT MAX(session_id) as max_id FROM ai_conversations WHERE user_id = $1',
         [req.userId]
       );
-      const maxId = lastSessionResult.rows[0].max_id || 0;
+      const maxId = lastSessionResult.rows[0]?.max_id || 0;
       session_id = maxId + 1;
     }
 

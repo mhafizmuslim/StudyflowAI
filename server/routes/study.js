@@ -17,10 +17,17 @@ router.post('/modules/generate-content', verifyToken, async (req, res) => {
     
     // Check if module already has content (with caching)
     const existingModule = await dbHelpers.getLearningModule(plan_id, module_order);
-    if (existingModule && existingModule.content && existingModule.content.trim() !== '') {
+    if (existingModule && existingModule.konten && existingModule.konten.trim() !== '') {
+      let quiz = [];
+      try {
+        quiz = JSON.parse(existingModule.quiz_data || '[]');
+      } catch (e) {
+        console.error('Error parsing quiz data:', e);
+        quiz = [];
+      }
       return res.json({ 
-        content: existingModule.content, 
-        quiz: JSON.parse(existingModule.quiz || '[]'),
+        content: existingModule.konten, 
+        quiz,
         cached: true 
       });
     }
